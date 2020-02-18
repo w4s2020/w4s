@@ -15,7 +15,6 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired
 from werkzeug.utils import secure_filename
 from wtforms import SubmitField
-# from wtforms import SubmitField
 import sys
 from wtforms import StringField, PasswordField
 from wtforms.validators import ValidationError, InputRequired, Length

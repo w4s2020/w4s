@@ -91,3 +91,11 @@ docker build -t w4stest:v1 .
 run it
 
 docker run --name w4stest1 -d -p 8088:5000 w4stest:v1
+
+#####################################
+
+http://localhost:5000/food/feasible/recipes?ingredients=tomato,+butter,+eggs&number=10
+
+###################################
+
+docker exec -it CONTAINERNAME /bin/ash
