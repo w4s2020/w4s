@@ -1,5 +1,30 @@
-from flask import Flask, render_template, url_for
+
 import manage_dynamodb
+from flask import Flask, request, session, make_response, redirect, url_for, redirect, render_template, g, abort, flash, Markup, send_file
+from  flask_admin import Admin
+import flask_login as login
+import requests
+from flask_sqlalchemy import SQLAlchemy
+import json
+import os
+import boto3
+import netaddr
+import time
+import datetime
+from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileRequired
+from werkzeug.utils import secure_filename
+from wtforms import SubmitField
+from wtforms import SubmitField
+import sys
+from wtforms import StringField, PasswordField
+from wtforms.validators import ValidationError, InputRequired, Length
+from wtforms import fields, form
+from flask_bootstrap import Bootstrap
+import simplejson
+import jinja2
+from jinja2.utils import Markup
+from flask import Response
 app = Flask(__name__)
 
 posts = [
@@ -61,7 +86,6 @@ def find_recipes():
          total_ingredients.append(used_ingredients)
          recipe_total_ingredients[item] = total_ingredients
 
-    #recipes_data_json = json.dumps(recipes_missing_ingredients)
 
     return render_template('recipes.html', data = recipe_total_ingredients)
 
