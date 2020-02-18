@@ -54,7 +54,7 @@ def find_recipes():
 
 
 @app.route('/home')
-def home():
+def home1():
     return render_template('home.html', posts=posts)
 
 @app.route('/about')
