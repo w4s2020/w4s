@@ -63,13 +63,11 @@ def about():
 
 
 
-
-
 @app.route('/createtable')
 def createtable():
     manage_dynamodb.create_table()
     return "<h1>Table Created!</h1>"
-
+    
 if __name__== '__main__':
     app.run(debug=True, host='0.0.0.0')
     
