@@ -1,0 +1,28 @@
+<html>
+<body>
+
+
+<table class="thick-border">
+        <tr>
+                <th> RECIPE</th>
+
+                <th> MISSING INGREDIENTS</th>
+                <th> UTILIZED INGREDIENTS </th>
+
+        </tr>
+        {% for k, v in data.items() %}
+                <tr>
+                        <td>{{ k }}</td>
+
+                        <td>  {% for i in v[0] %} {{loop.index}}# {{i}}&nbsp;&nbsp; {% endfor %} </td>
+                        <td>  {% for i in v[1] %} {{loop.index}}# {{i}}&nbsp;&nbsp; {% endfor %} </td>
+                </tr>
+
+        {% endfor %}
+
+
+</table>
+
+
+</body>
+</html>
