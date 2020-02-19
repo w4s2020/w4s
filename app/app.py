@@ -50,9 +50,11 @@ def find_recipes():
     feasible_recipes_title = []
 
     url = "https://api.spoonacular.com/recipes/findByIngredients"
+    f = open(API.txt, r)
+    API = f.read()
     number_of_recipes = request.args.get('number')
     available_ingredients = request.args.get('ingredients')
-    querystring = {"number": number_of_recipes,"ranking": "1", "ignorePantry": "true", "ingredients": available_ingredients, "apiKey":"API"}
+    querystring = {"number": number_of_recipes,"ranking": "1", "ignorePantry": "true", "ingredients": available_ingredients, "apiKey":API}
 
     response  = requests.get(url, params=querystring)
     recipes_list_length = len(response.json())
