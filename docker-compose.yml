@@ -5,7 +5,7 @@ services:
       ports:
         - "8000:8000"
     w4stest:
-      image: w4stest:v3
+      image: w4stest:v4
       environment:
         - AWS_ACCESS_KEY_ID=dummy
         - AWS_SECRET_ACCESS_KEY=dummy

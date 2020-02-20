@@ -8,7 +8,7 @@ from flask_sqlalchemy import SQLAlchemy
 import json
 import os
 import boto3
-import netaddr
+# import netaddr
 import time
 import datetime
 from flask_wtf import FlaskForm
@@ -28,15 +28,15 @@ app = Flask(__name__)
 
 posts = [
     {
-        'author': 'Pippo1',
-        'title': 'Blog post 1',
-        'content': 'First post content',
+        'author': 'Arturo Padellaro',
+        'title': 'Recipes for next Xmas',
+        'content': 'Pasta e fagioli con cotenna.....Boooona!!!',
         'date_posted': 'Febraury 20, 2019'
     },
     {
-        'author': 'Pluto',
-        'title': 'Blog post 2',
-        'content': 'Second post content',
+        'author': 'Martina Santomestolo',
+        'title': 'Eggs thrown under the bus',
+        'content': 'Amazing recipe but do not try it while waiting at the bus stop',
         'date_posted': 'Febraury 28, 2019'
     }
 
@@ -46,10 +46,12 @@ posts = [
 def find_recipes():
     if request.method == "POST":
 
-        recipes_filtered = []
-        feasible_recipes = {}
-        feasible_recipes_length = []
-        feasible_recipes_title = []
+    url = "https://api.spoonacular.com/recipes/findByIngredients"
+    f = open("API.txt", "r")
+    API = f.read()
+    number_of_recipes = request.args.get('number')
+    available_ingredients = request.args.get('ingredients')
+    querystring = {"number": number_of_recipes,"ranking": "1", "ignorePantry": "true", "ingredients": available_ingredients, "apiKey":API}
 
         url = "https://api.spoonacular.com/recipes/findByIngredients"
         f = open('/home/ec2-user/API.txt', 'r')
@@ -96,16 +98,22 @@ def find_recipes():
         return render_template('recipes.html', data = recipe_total_ingredients)
     return render_template('find_recipes.html')
 
-
+@app.route('/')
 @app.route('/home')
-def home1():
+def home():
     return render_template('home.html', posts=posts)
 
 @app.route('/about')
 def about():
     return render_template('about.html', title ='About')
 
+@app.route('/login')
+def login():
+    return render_template('login.html', title ='Login')
 
+@app.route('/register')
+def register():
+    return render_template('register.html', title ='Register')
 
 @app.route('/createtable')
 def createtable():
