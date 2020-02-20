@@ -1,84 +1,5 @@
-<html>
-<style>
-input[type=text]{
-  width: 90%;
-  padding: 12px 12px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-
-select{
-  width: 30%;
-  padding: 5px 5px;
-  margin: 8px 0;
-
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-input[type=submit] {
-  width: 40%;
-  background-color: #4CAF50;
-  color: red;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: black;
-  border-radius: 9px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: lightgreen;
-}
-
-body {
-background-color: white;
-}
-
-h3 {
-color: blue;
-margin: 8px 0;
-font-style: italic;
-}
-
-.recipe {
-width: 40%;
-background-color: lightgrey;
-border: black;
-border-radius: 9px;
-position: relative;
-left: 600px;
-top: -300px;
-}
-
-h2 {
-color: blue;
-margin: 8px 0;
-font-style: italic;
-}
-
-.ppp {
-  border-radius: 15px;
-  background-color: lightblue;
-  width: 30%;
-  padding: 20px;
-}
-
-
-.sss {
-  border-radius: 8px;
-  width: 100%;
-  background-color: lightgreen;
-  text-align: center;
-  padding: 5px;
-}
-
-</style>
-<body>
+{% extends "layout.html" %}
+{% block content %}
 
 <div class="sss">
 <h2>I AM YOUR NEW DIGITAL CHEF</h2>
@@ -116,6 +37,7 @@ font-style: italic;
       <option value="Classic">Classic</option>
     </select>
         <br>
+    <br>
 
     <input type="submit" value="FIND MY RECIPE">
   </form>
@@ -123,7 +45,4 @@ font-style: italic;
 
 </div>
 <br>
-
-
-</body>
-</html>
+{% endblock content %}
