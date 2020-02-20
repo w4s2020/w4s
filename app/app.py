@@ -46,16 +46,9 @@ posts = [
 def find_recipes():
     if request.method == "POST":
 
-    url = "https://api.spoonacular.com/recipes/findByIngredients"
-    f = open("API.txt", "r")
-    API = f.read()
-    number_of_recipes = request.args.get('number')
-    available_ingredients = request.args.get('ingredients')
-    querystring = {"number": number_of_recipes,"ranking": "1", "ignorePantry": "true", "ingredients": available_ingredients, "apiKey":API}
-
         url = "https://api.spoonacular.com/recipes/findByIngredients"
-        f = open('/home/ec2-user/API.txt', 'r')
-        API = (f.read()).rstrip()
+        f = open('API.txt', 'r')
+        API = f.read()
         number_of_recipes = 10
 
         available_ingredients = request.form['ingredients']
