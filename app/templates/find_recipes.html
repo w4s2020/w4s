@@ -1,0 +1,129 @@
+<html>
+<style>
+input[type=text]{
+  width: 90%;
+  padding: 12px 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+select{
+  width: 30%;
+  padding: 5px 5px;
+  margin: 8px 0;
+
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 40%;
+  background-color: #4CAF50;
+  color: red;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: black;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: lightgreen;
+}
+
+body {
+background-color: white;
+}
+
+h3 {
+color: blue;
+margin: 8px 0;
+font-style: italic;
+}
+
+.recipe {
+width: 40%;
+background-color: lightgrey;
+border: black;
+border-radius: 9px;
+position: relative;
+left: 600px;
+top: -300px;
+}
+
+h2 {
+color: blue;
+margin: 8px 0;
+font-style: italic;
+}
+
+.ppp {
+  border-radius: 15px;
+  background-color: lightblue;
+  width: 30%;
+  padding: 20px;
+}
+
+
+.sss {
+  border-radius: 8px;
+  width: 100%;
+  background-color: lightgreen;
+  text-align: center;
+  padding: 5px;
+}
+
+</style>
+<body>
+
+<div class="sss">
+<h2>I AM YOUR NEW DIGITAL CHEF</h2>
+
+<h3>LET`S FIND SOMETHING TASTY </h3>
+
+
+</div>
+
+<br>
+<br>
+
+<div class="ppp">
+  <form action="" method="POST" enctype="multipart/form-data">
+    <label for="ingr">Available Ingredients</label>
+        <br>
+
+    <input type="text" id="ingr" name="ingredients" placeholder="Ingredients">
+        <br>
+
+    <label for="course">Course Type</label>
+        <br>
+    <select id="course" name="course">
+      <option value="Mains">Mains</option>
+      <option value="Sides">Sides</option>
+      <option value="Appetitizers">Appetitizers</option>
+          <option value="Desserts">Desserts</option>
+    </select>
+        <br>
+        <label for="kitchen">Kitchen Type</label>
+        <br>
+    <select id="kitchen" name="kitchen">
+      vegan<option value="Vegan">Vegan</option>
+      <option value="Vegetarian">Vegetarian</option>
+      <option value="Classic">Classic</option>
+    </select>
+        <br>
+
+    <input type="submit" value="FIND MY RECIPE">
+  </form>
+
+
+</div>
+<br>
+
+
+</body>
+</html>
