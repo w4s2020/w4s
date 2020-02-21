@@ -46,6 +46,11 @@ posts = [
 def find_recipes():
     if request.method == "POST":
 
+        recipes_filtered = []
+        feasible_recipes = {}
+        feasible_recipes_length = []
+        feasible_recipes_title = []
+
         url = "https://api.spoonacular.com/recipes/findByIngredients"
         f = open('API.txt', 'r')
         API = f.read()
