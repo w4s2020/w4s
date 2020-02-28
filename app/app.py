@@ -96,6 +96,37 @@ def find_recipes():
         return render_template('recipes.html', data = recipe_total_ingredients)
     return render_template('find_recipes.html')
 
+
+
+@app.route('/food/fast_menu', methods=['GET','POST'])
+def fast_menu():
+    if request.method == "POST":
+
+        query = request.form['query']
+        menu_list = []
+        restaurant = []
+
+        url = "https://api.spoonacular.com/food/menuItems/search"
+        f = open('API.txt', 'r')
+        API = f.read()
+        number_of_menu = 10
+
+        querystring = {"query": query, "number": number_of_menu, "apiKey": API}
+        response  = requests.get(url, params=querystring)
+
+        fast_menu = response.json()['menuItems']
+ 
+        for item in fast_menu:
+            menu_list.append(item['title'])
+            restaurant.append(item['restaurantChain'])
+
+
+        return render_template('fast_menu.html', menu_list = menu_list, restaurant = restaurant)
+    return render_template('find_fast_menu.html')
+
+
+
+
 @app.route('/')
 @app.route('/home')
 def home():
