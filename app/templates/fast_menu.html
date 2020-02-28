@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<table class="thick-border">
+
+    <th>Recipe</th>
+
+                <th>Found Menu Item</th>
+                <th>Restaurant </th>
+
+        {% for i in menu_list %}
+              {% set item_1 = menu_list[loop.index-1] %}
+              {% set item_2 = restaurant[loop.index-1] %}
+             <tr>
+                   <td> {{ item_1 }} </td>
+                   <td>  {{ item_2 }} </td>
+            </tr>
+        {% endfor %}
+          </table>
+
+
+</table>
+
+{% endblock content %}
