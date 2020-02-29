@@ -38,6 +38,12 @@ posts = [
         'title': 'Eggs thrown under the bus',
         'content': 'Amazing recipe but do not try it while waiting at the bus stop',
         'date_posted': 'Febraury 28, 2019'
+    },
+    {
+        'author': 'Gemma SuperChef',
+        'title': 'Eat Roblox',
+        'content': 'If you like Roblox so much then eat it',
+        'date_posted': 'Febraury 29, 2020'
     }
 
 ]
