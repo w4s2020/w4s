@@ -42,7 +42,7 @@ posts = [
 
 ]
 
-@app.route('/food/feasible/recipes', methods=['GET','POST'])
+@app.route('/food/recipes', methods=['GET','POST'])
 def find_recipes():
     if request.method == "POST":
 
