@@ -70,16 +70,12 @@ def find_recipes():
         querystring = {"number": number_of_recipes,"ranking": "1", "ignorePantry": "true", "ingredients": available_ingredients, "apiKey": API}
         response  = requests.get(url, params=querystring)
         recipes_list_length = len(response.json())
-        recipes = Response(response, status=200, mimetype='application/json')
 
         for x in range(0, recipes_list_length):
             if ((response.json()[x]["missedIngredientCount"]) < 3):
 
                 recipes_filtered.append(response.json()[x])
                 feasible_recipes_length = len(recipes_filtered)
-                #recipes_missing_ingredients = {}
-                #recipes_used_ingredients = {}
-                #total = {}
 
         for x in range(0, feasible_recipes_length):
 
