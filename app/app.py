@@ -56,6 +56,7 @@ def find_recipes():
         feasible_recipes = {}
         feasible_recipes_length = []
         feasible_recipes_title = []
+        total = {}
 
         url = "https://api.spoonacular.com/recipes/findByIngredients"
         f = open('API.txt', 'r')
@@ -76,16 +77,17 @@ def find_recipes():
 
                 recipes_filtered.append(response.json()[x])
                 feasible_recipes_length = len(recipes_filtered)
-                recipes_missing_ingredients = {}
-                recipes_used_ingredients = {}
-                recipe_total_ingredients = {}
+                #recipes_missing_ingredients = {}
+                #recipes_used_ingredients = {}
+                #total = {}
 
         for x in range(0, feasible_recipes_length):
 
             feasible_recipes_title.append(recipes_filtered[x]["title"])
-            total_ingredients = []
+            recipe_total = []
             missing_ingredients = []
             used_ingredients = []
+            recipe_id = []
             item = recipes_filtered[x]["title"]
             for y in range(0, recipes_filtered[x]["missedIngredientCount"]):
                 missing_ingredients.append(recipes_filtered[x]["missedIngredients"][y]["name"])
@@ -94,12 +96,19 @@ def find_recipes():
             for z in range(0, recipes_filtered[x]["usedIngredientCount"]):
                 used_ingredients.append(recipes_filtered[x]["usedIngredients"][z]["name"])
 
-            total_ingredients.append(missing_ingredients)
-            total_ingredients.append(used_ingredients)
-            recipe_total_ingredients[item] = total_ingredients
+            
+            recipe_id.append(recipes_filtered[x]["id"])
 
 
-        return render_template('recipes.html', data = recipe_total_ingredients)
+            recipe_total.append(missing_ingredients)
+            recipe_total.append(used_ingredients)
+            recipe_total.append(recipe_id)
+
+
+            total[item] = recipe_total
+
+
+        return render_template('recipes.html', total = total)
     return render_template('find_recipes.html')
 
 
