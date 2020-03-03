@@ -112,6 +112,10 @@ def find_recipes():
     return render_template('find_recipes.html')
 
 
+@app.route('/food/recipe_description', methods=['GET','POST'])
+def recipe_description():
+    pass
+
 
 @app.route('/food/fast_menu', methods=['GET','POST'])
 def fast_menu():
