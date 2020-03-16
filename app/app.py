@@ -141,6 +141,28 @@ def fast_menu():
 
 
 
+@app.route('/food/sommeliere', methods=['GET','POST'])
+def sommeliere():
+    if request.method == "POST":
+        food = request.form['food']
+        price = request.form['price']
+        wine_price = []
+        wine_title = []
+        wine_link = []
+        url = "https://api.spoonacular.com/food/wine/pairing"
+        f = open('API.txt', 'r')
+        API = f.read()
+        querystring = {"food": food, "maxPrice": price, "apiKey": API}
+        response = requests.get(url, params=querystring)
+        wines_in_range = response.json()['productMatches']
+        for item in wines_in_range:
+            wine_title.append(item['title'])
+            wine_price.append(item['price'])
+            wine_link.append(item['link'])
+        return render_template('paired_wines.html', wine_title = wine_title, wine_price = wine_price, wine_link = wine_link)
+    return render_template('find_paired_wines.html')
+
+
 
 @app.route('/')
 @app.route('/home')
