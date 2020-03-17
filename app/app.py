@@ -110,7 +110,7 @@ def find_recipes():
 
 @app.route('/food/recipe_description', methods=['GET','POST'])
 def recipe_description():
-    recipe_id = request.args['id']
+    recipe_id = request.args.get['id']
     pass
 
 
