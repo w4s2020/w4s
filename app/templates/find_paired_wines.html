@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="sss">
+<h2>I AM YOUR NEW DIGITAL SOMMELIER</h2>
+<h3>LET`S FIND SOME GOOD WINE TO PAIR WITH YOUR DINNER</h3>
+</div>
+
+<br>
+<br>
+
+<div class="menu_search">
+  <form action="" method="POST" enctype="multipart/form-data">
+    <label for="food">Insert course you want to pair with the wine</label>
+    <br>
+    <input type="text" id="food" name="food" placeholder="Meat, pasta, etc...">
+    <br>
+    <label for="price">Wine max price</label>
+    <br>
+    <input type="text" id="price" name="price" placeholder="20$...30$...">
+
+    <br>
+    <br>
+    <input type="submit" value="FIND WINES">
+  </form>
+</div>
+
+{% endblock content %}

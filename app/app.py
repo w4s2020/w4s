@@ -56,6 +56,7 @@ def find_recipes():
         feasible_recipes = {}
         feasible_recipes_length = []
         feasible_recipes_title = []
+        total = {}
 
         url = "https://api.spoonacular.com/recipes/findByIngredients"
         f = open('API.txt', 'r')
@@ -69,23 +70,20 @@ def find_recipes():
         querystring = {"number": number_of_recipes,"ranking": "1", "ignorePantry": "true", "ingredients": available_ingredients, "apiKey": API}
         response  = requests.get(url, params=querystring)
         recipes_list_length = len(response.json())
-        recipes = Response(response, status=200, mimetype='application/json')
 
         for x in range(0, recipes_list_length):
             if ((response.json()[x]["missedIngredientCount"]) < 3):
 
                 recipes_filtered.append(response.json()[x])
                 feasible_recipes_length = len(recipes_filtered)
-                recipes_missing_ingredients = {}
-                recipes_used_ingredients = {}
-                recipe_total_ingredients = {}
 
         for x in range(0, feasible_recipes_length):
 
             feasible_recipes_title.append(recipes_filtered[x]["title"])
-            total_ingredients = []
+            recipe_total = []
             missing_ingredients = []
             used_ingredients = []
+            recipe_id = []
             item = recipes_filtered[x]["title"]
             for y in range(0, recipes_filtered[x]["missedIngredientCount"]):
                 missing_ingredients.append(recipes_filtered[x]["missedIngredients"][y]["name"])
@@ -94,14 +92,26 @@ def find_recipes():
             for z in range(0, recipes_filtered[x]["usedIngredientCount"]):
                 used_ingredients.append(recipes_filtered[x]["usedIngredients"][z]["name"])
 
-            total_ingredients.append(missing_ingredients)
-            total_ingredients.append(used_ingredients)
-            recipe_total_ingredients[item] = total_ingredients
+            
+            recipe_id.append(recipes_filtered[x]["id"])
 
 
-        return render_template('recipes.html', data = recipe_total_ingredients)
+            recipe_total.append(missing_ingredients)
+            recipe_total.append(used_ingredients)
+            recipe_total.append(recipe_id)
+
+
+            total[item] = recipe_total
+
+
+        return render_template('recipes.html', total = total)
     return render_template('find_recipes.html')
 
+
+@app.route('/food/recipe_description', methods=['GET','POST'])
+def recipe_description():
+    recipe_id = request.args.get['id']
+    pass
 
 
 @app.route('/food/fast_menu', methods=['GET','POST'])
@@ -130,6 +140,28 @@ def fast_menu():
         return render_template('fast_menu.html', menu_list = menu_list, restaurant = restaurant)
     return render_template('find_fast_menu.html')
 
+
+
+@app.route('/food/sommeliere', methods=['GET','POST'])
+def sommeliere():
+    if request.method == "POST":
+        food = request.form['food']
+        price = request.form['price']
+        wine_price = []
+        wine_title = []
+        wine_link = []
+        url = "https://api.spoonacular.com/food/wine/pairing"
+        f = open('API.txt', 'r')
+        API = f.read()
+        querystring = {"food": food, "maxPrice": price, "apiKey": API}
+        response = requests.get(url, params=querystring)
+        wines_in_range = response.json()['productMatches']
+        for item in wines_in_range:
+            wine_title.append(item['title'])
+            wine_price.append(item['price'])
+            wine_link.append(item['link'])
+        return render_template('paired_wines.html', wine_title = wine_title, wine_price = wine_price, wine_link = wine_link)
+    return render_template('find_paired_wines.html')
 
 
 

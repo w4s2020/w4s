@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<table class="thick-border">
+
+                <th>Wine</th>
+                <th>Price</th>
+                <th>Web Link</th>
+
+        {% for i in wine_title %}
+              {% set item_1 = wine_title[loop.index-1] %}
+              {% set item_2 = wine_price[loop.index-1] %}
+              {% set item_3 = wine_link[loop.index-1] %}
+             <tr>
+                   <td> {{ item_1 }} </td>
+                   <td>  {{ item_2 }} </td>
+                   <td>  {{ item_3 }} </td>
+            </tr>
+        {% endfor %}
+          </table>
+
+
+</table>
+
+{% endblock content %}

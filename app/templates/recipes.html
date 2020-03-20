@@ -7,14 +7,17 @@
 
                 <th>Missing Ingredients</th>
                 <th>Used Ingredients </th>
+                <th>Recipe Description Link </th>
 
         </tr>
-        {% for k, v in data.items() %}
+        {% for k, v in total.items() %}
                 <tr>
                         <td>{{ k }}</td>
 
                         <td>  {% for i in v[0] %} {{loop.index}}# {{i}}&nbsp;&nbsp; {% endfor %} </td>
                         <td>  {% for i in v[1] %} {{loop.index}}# {{i}}&nbsp;&nbsp; {% endfor %} </td>
+                        <td>  {% for i in v[2] %} <a href="/food/recipe_description?id={{i}}">Recipe Description</a> {% endfor %} </td>
+
                 </tr>
 
         {% endfor %}
